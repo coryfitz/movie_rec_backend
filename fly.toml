@@ -1,10 +1,9 @@
-# fly.toml app configuration file generated for movie-rec-api on 2023-09-24T15:50:10+01:00
+# fly.toml app configuration file generated for backend-movie-rec on 2023-09-24T17:35:17+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
-# testing deployment by GH actions
 
-app = "movie-rec-api"
+app = "backend-movie-rec"
 primary_region = "lhr"
 console_command = "/code/manage.py shell"
 
