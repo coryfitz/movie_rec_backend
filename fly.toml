@@ -2,6 +2,7 @@
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
+# testing deployment by GH actions
 
 app = "movie-rec-api"
 primary_region = "lhr"
