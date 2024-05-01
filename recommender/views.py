@@ -27,7 +27,8 @@ class PublicRecommenderView(views.APIView):
                     {"role": "user", "content": f"Please recommend one movie for me to watch based on my preferences: {preferences} Please don't recommend more than one film."}
                 ]
         )
-        return completion.choices[0].message.content
+    
+        return {'response': completion.choices[0].message.content}
 
     def post(self, request):
             preferences = request.data['preferences']['responses']
