@@ -1,7 +1,8 @@
 import ast
 import json
 
-import openai
+from openai import OpenAI
+client = OpenAI()
 
 from rest_framework import generics, status, views
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -19,14 +20,14 @@ class PublicRecommenderView(views.APIView):
     throttle_scope = 'low'
 
     def get_api_response(self, preferences):
-        response = openai.ChatCompletion.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": f"Please recommend one movie for me to watch based on my preferences: {preferences} Please don't recommend more than one film."}
                 ]
         )
-        return {'response': response['choices'][0]['message']['content']}
+        return {'response': completion['choices'][0]['message']['content']}
 
     def post(self, request):
             preferences = request.data['preferences']['responses']
